@@ -1,14 +1,21 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "../pages/shared/Footer/Footer";
+import Header from "../pages/shared/Header/Header";
 
 const LayoutMain = () => {
   return (
     <div>
-      <header>I am Header</header>
+      <header>
+        <Header></Header>
+      </header>
       <main>
         <Outlet></Outlet>
       </main>
-      <footer>i am footer</footer>
+
+      <section id="footer">
+        <Footer></Footer>
+      </section>
     </div>
   );
 };
