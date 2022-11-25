@@ -23,7 +23,7 @@ const Header = () => {
     </React.Fragment>
   );
   return (
-    <div className="navbar bg-base-100 flex justify-between">
+    <div className="navbar bg-accent flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -49,8 +49,13 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          GOHONA-BARI
+        <Link to="/" className="font-bold text-2xl flex gap-1 items-center">
+          <img
+            src="https://cdn0.iconfinder.com/data/icons/elementary-school-solid-education-is-growth/512/Book-256.png"
+            alt=""
+            width="30px"
+          />
+          Extra Books
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
