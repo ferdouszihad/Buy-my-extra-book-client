@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer items-center p-4 bg-neutral text-neutral-content">
-      <div className="items-center grid-flow-col">
+    <footer className="p-4 bg-neutral text-neutral-content  space-y-4">
+      <div className="flex items-center justify-center">
         <Link to="/" className="font-bold text-2xl flex gap-1 items-center">
           <img
             src="https://cdn0.iconfinder.com/data/icons/elementary-school-solid-education-is-growth/512/Book-256.png"
@@ -13,9 +13,9 @@ const Footer = () => {
           />
           Extra Books
         </Link>
-        <p>Copyright © 2022 - All right reserved</p>
       </div>
-      <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+      <p className="text-center">Ferdous Zihad | All Right Reserve</p>
+      <div className="flex mt-10 justify-center gap-6">
         <a
           href="https://twitter.com/ferdouszihad09"
           rel="noreferrer"
