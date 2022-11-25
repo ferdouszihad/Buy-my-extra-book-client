@@ -1,66 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Header = () => {
-  const menuItems = (
-    <React.Fragment>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/catagories">Catagories</Link>
-      </li>
-
-      <li>
-        <Link to="/blog">Blog</Link>
-      </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-    </React.Fragment>
-  );
+  const expand = "md";
+  const logo =
+    "https://cdn0.iconfinder.com/data/icons/library-9/64/Search-book-find-education-school-library-magnifier-256.png";
   return (
-    <div className="navbar bg-accent flex justify-between">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+    <div id="navbar">
+      <Navbar key={expand} expand={expand} className="mb-3 fixed-top  bg-nav">
+        <Container>
+          <Navbar.Brand>
+            <Link to="/home" className="d-flex gap-2 align-items-center">
+              <img src={logo} alt="" width="60px" />
+              <h2>Buy-My-Book</h2>
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+          <Navbar.Offcanvas
+            id={`offcanvasNavbar-expand-${expand}`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+            placement="end"
           >
-            {menuItems}
-          </ul>
-        </div>
-        <Link to="/" className="font-bold text-2xl flex gap-1 items-center">
-          <img
-            src="https://cdn0.iconfinder.com/data/icons/elementary-school-solid-education-is-growth/512/Book-256.png"
-            alt=""
-            width="30px"
-          />
-          Extra Books
-        </Link>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
-      </div>
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                Offcanvas
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className="justify-content-end flex-grow-1 pe-3 gap-3">
+                <Link to="/home">Home</Link>
+                <Link to="/Catagories">Catagories</Link>
+                <Link to="/blog">Blogs</Link>
+                <Link to="/register">Register</Link>
+                <Link to="/login">Login</Link>
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
     </div>
   );
 };
