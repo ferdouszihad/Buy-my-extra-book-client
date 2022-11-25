@@ -1,108 +1,60 @@
 import React from "react";
+import { Button, Card } from "react-bootstrap";
+import Title from "../shared/Title";
 
 const AdvertiseItems = () => {
   return (
-    <section className="py-20">
-      <h1 className="text-3xl text-center uppercase font-semibold">
-        Top Items
-      </h1>
-      <div className="container mx-auto md:px-10 lg:px-20">
-        <div className="card-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://placeimg.com/400/225/arch"
-                alt="Shoes"
-                className="rounded-xl"
+    <section className="py-5">
+      <Title>Products from Our Seller</Title>
+      <div className="item-container container my-5">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+          <div className="col">
+            <Card>
+              <Card.Img
+                variant="top"
+                src="https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/3:2/w_1998,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg"
               />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           </div>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://placeimg.com/400/225/arch"
-                alt="Shoes"
-                className="rounded-xl"
+          <div className="col">
+            <Card>
+              <Card.Img
+                variant="top"
+                src="https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/3:2/w_1998,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg"
               />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           </div>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://placeimg.com/400/225/arch"
-                alt="Shoes"
-                className="rounded-xl"
+          <div className="col">
+            <Card>
+              <Card.Img
+                variant="top"
+                src="https://media.gq.com/photos/5ad64204c8be07604e8b5f2f/3:2/w_1998,h_1332,c_limit/21-books-GQ-April-2018-041718-3x2.jpg"
               />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://placeimg.com/400/225/arch"
-                alt="Shoes"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://placeimg.com/400/225/arch"
-                alt="Shoes"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-          <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-              <img
-                src="https://placeimg.com/400/225/arch"
-                alt="Shoes"
-                className="rounded-xl"
-              />
-            </figure>
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
           </div>
         </div>
       </div>

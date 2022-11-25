@@ -1,36 +1,72 @@
 import React from "react";
+import { Button, Card } from "react-bootstrap";
+import Title from "../shared/Title";
 
 const Catagories = () => {
   return (
-    <section className="py-20">
-      <h1 className="text-3xl text-center pb-10 uppercase font-semibold">
-        Choose Items From Catagory
-      </h1>
-      <div className="container mx-auto md:px-10 lg:px-20">
-        <div className="card-container grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="card bg-base-100 shadow-xl image-full">
-            <figure>
-              <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+    <section className="py-5">
+      <Title>Choose Products By Catagory</Title>
+      <div className="container catagory-container my-5">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-5">
+          <div className="col ">
+            <Card className="bg-dark text-white">
+              <Card.Img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7bcyYl9dcScru_JnzqLLQqXYK-X-WiKoPAA&usqp=CAU"
+                alt="Card image"
+              />
+              <Card.ImgOverlay>
+                <Card.Title>Academic Books</Card.Title>
+                <Card.Text>
+                  University , School,College academic Books and guides
+                </Card.Text>
+                <Button variant="outline-light">Explore This Catagory</Button>
+              </Card.ImgOverlay>
+            </Card>
           </div>
-          <div className="card bg-base-100 shadow-xl image-full">
-            <figure>
-              <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">Shoes!</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
+          <div className="col ">
+            <Card className="bg-dark text-white">
+              <Card.Img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7bcyYl9dcScru_JnzqLLQqXYK-X-WiKoPAA&usqp=CAU"
+                alt="Card image"
+              />
+              <Card.ImgOverlay>
+                <Card.Title>Academic Books</Card.Title>
+                <Card.Text>
+                  University , School,College academic Books and guides
+                </Card.Text>
+                <Button variant="outline-light">Explore This Catagory</Button>
+              </Card.ImgOverlay>
+            </Card>
+          </div>
+          <div className="col ">
+            <Card className="bg-dark text-white">
+              <Card.Img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7bcyYl9dcScru_JnzqLLQqXYK-X-WiKoPAA&usqp=CAU"
+                alt="Card image"
+              />
+              <Card.ImgOverlay>
+                <Card.Title>Academic Books</Card.Title>
+                <Card.Text>
+                  University , School,College academic Books and guides
+                </Card.Text>
+                <Button variant="outline-light">Explore This Catagory</Button>
+              </Card.ImgOverlay>
+            </Card>
+          </div>
+          <div className="col ">
+            <Card className="bg-dark text-white">
+              <Card.Img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7bcyYl9dcScru_JnzqLLQqXYK-X-WiKoPAA&usqp=CAU"
+                alt="Card image"
+              />
+              <Card.ImgOverlay>
+                <Card.Title>Academic Books</Card.Title>
+                <Card.Text>
+                  University , School,College academic Books and guides
+                </Card.Text>
+                <Button variant="outline-light">Explore This Catagory</Button>
+              </Card.ImgOverlay>
+            </Card>
           </div>
         </div>
       </div>
