@@ -1,14 +1,13 @@
 import React from "react";
+import Title from "../shared/Title";
 
 const Blog = () => {
   return (
-    <div className="container mx-auto md:px-10 lg:px-20 py-20">
-      <h1 className="text-3xl text-center pb-10 uppercase font-semibold">
-        Read Our Blogs
-      </h1>
-      <div className="flex flex-col w-full flex-wrap min-h-screen">
-        <div className="grid  card bg-base-100 rounded-box mb-10 place-items-center">
-          <div className="question text-xl font-medium mb-8">
+    <div className="container mt-5 pt-5">
+      <Title>Read Our Blogs</Title>
+      <div className="">
+        <div className="card mb-5 mt-4  p-5">
+          <div className="question fw-semibold mb-3 ">
             What are the different ways to manage a state in a React
             application?
           </div>
@@ -25,8 +24,8 @@ const Blog = () => {
           </div>
         </div>
         <div className="divider"></div>
-        <div className="grid  card bg-base-100 rounded-box mb-10 place-items-center">
-          <div className="question text-xl font-medium mb-8">
+        <div className="card mb-5 p-5">
+          <div className="question fw-semibold mb-3 ">
             How does prototypical inheritance work?
           </div>
           <div className="answer text-black">
@@ -39,8 +38,8 @@ const Blog = () => {
           </div>
         </div>
         <div className="divider"></div>
-        <div className="grid  card bg-base-100 rounded-box mb-10 place-items-center">
-          <div className="question text-xl font-medium mb-8">
+        <div className="card mb-5 p-5">
+          <div className="question fw-semibold mb-3 ">
             What is a unit test? Why should we write unit tests?
           </div>
           <div className="answer text-black">
@@ -64,8 +63,8 @@ const Blog = () => {
           </div>
         </div>
         <div className="divider"></div>
-        <div className="grid  card bg-base-100 rounded-box mb-10 place-items-center">
-          <div className="question text-xl font-medium mb-8">
+        <div className="card mb-5 p-5">
+          <div className="question fw-semibold mb-3 ">
             React vs. Angular vs. Vue?
           </div>
           <div className="answer text-black">

@@ -1,11 +1,11 @@
 import React from "react";
+import Title from "../shared/Title";
 
 const AddProduct = () => {
   return (
-    <div>
-      <h3 className="text-4xl py-3 border-b-4 border-fuchsia-700">
-        Add A Product
-      </h3>
+    <div className="mt-5 pt-5">
+      <Title>Add A PRODUCT</Title>
+      <div className="container form-container"></div>
     </div>
   );
 };

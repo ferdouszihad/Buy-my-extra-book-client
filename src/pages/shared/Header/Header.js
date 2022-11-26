@@ -34,6 +34,7 @@ const Header = () => {
               <Nav className="justify-content-end flex-grow-1 pe-3 gap-3">
                 <Link to="/home">Home</Link>
                 <Link to="/Catagories">Catagories</Link>
+                <Link to="/add-product">Add a Product</Link>
                 <Link to="/blog">Blogs</Link>
                 <Link to="/register">Register</Link>
                 <Link to="/login">Login</Link>
