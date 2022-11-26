@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../context/UserContext";
 import Title from "../shared/Title";
 
@@ -17,10 +18,11 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         setUser(user);
+        toast.success("Welcome!! You are logged in");
         navigate("/home");
       })
       .catch((error) => {
-        alert("Cant sign in");
+        toast.error("Sign in Failed");
         console.error(error);
       });
   };

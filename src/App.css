@@ -18,3 +18,22 @@
     display: flex;
     align-items: center;
 }
+.success-bg{
+    background-image: url('https://techsoros.github.io/taxicab/img/testimonibg.png');
+    background-attachment: fixed ;
+}
+.success-box div{
+    min-height: 200px;
+    min-width: 200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 33px -17px #ddd;
+    border-radius: 13px;
+    background-color: rgba(221, 221, 221, 0.208);
+}
+.bg-black{
+    background-color: rgba(0, 0, 0, 0.916);
+    
+}

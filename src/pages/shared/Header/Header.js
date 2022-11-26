@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <div id="navbar" className="fixed-top">
       {user && user.uid ? (
-        <p className="bg-dark py-1 text-light m-0 text-center">
+        <p className="bg-black py-1 text-light m-0 text-center">
           🎉 Welcome,
           {user.displayName ? user.displayName : user.email}
         </p>
@@ -53,7 +53,7 @@ const Header = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3 gap-3 align-items-center">
+              <Nav className="justify-content-end fs-5 flex-grow-1 pe-3 gap-4 align-items-center">
                 <Link to="/home">Home</Link>
                 <Link to="/Catagories">Catagories</Link>
                 <Link to="/add-product">Add a Product</Link>
