@@ -4,6 +4,7 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../context/UserContext";
 import Title from "../shared/Title";
 
@@ -13,11 +14,36 @@ const Register = () => {
     useContext(AuthContext);
   const navigate = useNavigate();
 
+  const addUserToDB = (user) => {
+    fetch("http://localhost:5000/addUser", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("User Added to Our System");
+        console.log(data);
+      })
+      .catch((err) => toast(err));
+  };
+
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
         const user = res.user;
         setUser(user);
+        toast.success("Registration Successfull");
+        const myUser = {
+          uid: user.uid,
+          name: user.displayName,
+          contact: user.phoneNumber,
+          role: "buyer",
+          email: user.email,
+        };
+        addUserToDB(myUser);
         navigate("/home");
       })
       .catch((error) => {
@@ -32,6 +58,9 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const role = form.role.value;
+    const contact = form.contact.value;
+    console.log(role, contact);
 
     if (password.length <= 6) {
       setError("Make the password minimum 6 characters long");
@@ -40,29 +69,41 @@ const Register = () => {
 
     createUser(email, password)
       .then((res) => {
-        alert("Sign-up Successful");
+        toast.success("Registration Successfull");
         const user = res.user;
-        setUser(user);
         const userInfo = {
           displayName: name,
+          photoURL:
+            "https://lh3.googleusercontent.com/-UXGcS_7l_08/AAAAAAAAAAI/AAAAAAAAAAA/ADleYaU385b3OpixuYV7lj_ki-_yXr2Dhg/photo.jpg?sz=46",
+          phoneNumber: contact,
         };
 
         updateUser(userInfo)
           .then(() => {
             setUser(user);
+            console.log(user);
           })
           .catch((err) => console.log(err));
+
+        const myUser = {
+          uid: user.uid,
+          name: name,
+          contact: contact,
+          role: role,
+          email: user.email,
+        };
+        addUserToDB(myUser);
+        navigate("/home");
       })
       .catch((error) => {
-        alert("User Sign-up Failed.  see log");
-        console.error(error);
+        toast.error(` Can't Sign In. Because ${error.code}`);
+        console.log(error);
       });
   };
   return (
     <div>
       <div className="container mt-5 pt-5">
         <Title>Join With US</Title>
-
         <div
           className="form-container mx-auto border border-1 my-5 p-3"
           style={{ maxWidth: "420px" }}
@@ -78,7 +119,7 @@ const Register = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
@@ -86,6 +127,25 @@ const Register = () => {
                 placeholder="Enter email"
                 required
               />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Your Contact No.</Form.Label>
+              <Form.Control
+                type="tel"
+                name="contact"
+                placeholder="Enter Your Phone number"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Select your Role</Form.Label>
+              <Form.Select aria-label="Default select example" name="role">
+                <option value="buyer" selected>
+                  I want to be a Buyer
+                </option>
+                <option value="seller"> I want to be a Seller</option>
+              </Form.Select>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">

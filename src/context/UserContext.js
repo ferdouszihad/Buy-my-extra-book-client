@@ -46,7 +46,6 @@ const UserContext = ({ children }) => {
     const unscubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      console.log(currentUser);
     });
     return () => {
       unscubscribe();

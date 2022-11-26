@@ -13,6 +13,8 @@ const Footer = () => {
         <img src={logo} alt="" width="60px" />
         <h2>Buy-My-Book</h2>
       </Link>
+
+      <a href=""></a>
       <hr />
       <p>Ferdous Zihad || All right reserved</p>
     </footer>
