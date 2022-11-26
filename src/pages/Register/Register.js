@@ -9,7 +9,8 @@ import Title from "../shared/Title";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, setUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, setUser, googleSignIn, updateUser } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
@@ -28,11 +29,13 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
 
     if (password.length <= 6) {
       setError("Make the password minimum 6 characters long");
+      return;
     }
 
     createUser(email, password)
@@ -40,8 +43,15 @@ const Register = () => {
         alert("Sign-up Successful");
         const user = res.user;
         setUser(user);
-        form.reset();
-        navigate("/home");
+        const userInfo = {
+          displayName: name,
+        };
+
+        updateUser(userInfo)
+          .then(() => {
+            setUser(user);
+          })
+          .catch((err) => console.log(err));
       })
       .catch((error) => {
         alert("User Sign-up Failed.  see log");

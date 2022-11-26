@@ -6,7 +6,6 @@ const Title = ({ children }) => {
       <h2 className="fw-semibold py-2 border-bottom border-5 border-primary">
         {children}
       </h2>
-      ;
     </div>
   );
 };
