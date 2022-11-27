@@ -28,6 +28,7 @@ const AddProduct = () => {
       sellerEmail: user.email,
       postedTime: time,
       location: form.location.value,
+      status: "none",
     };
     console.log(product);
 
