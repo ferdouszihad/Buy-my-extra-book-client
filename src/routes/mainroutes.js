@@ -9,6 +9,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import SellerRoute from "./SellerRoute";
+import MyProducts from "../pages/MyProducts.js/MyProducts";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
         element: (
           <SellerRoute>
             <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
+      },
+      {
+        path: "my-products",
+        element: (
+          <SellerRoute>
+            <MyProducts></MyProducts>
           </SellerRoute>
         ),
       },

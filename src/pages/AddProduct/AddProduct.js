@@ -1,83 +1,127 @@
-import React from "react";
+import { format } from "date-fns";
+import React, { useContext } from "react";
 import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../context/UserContext";
+import Title from "../shared/Title";
 
 const AddProduct = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const time = format(new Date(), "PPpp");
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.ServiceName.value;
-    const image = form.image.value;
-    const desc = form.desc.value;
-    const pricing = form.pricing.value;
 
-    const service = {
-      id: parseInt(Math.random() * 100),
-      name: name,
-      img: image,
-      description: desc,
-      pricing: pricing,
-      review: 0,
-      sell: 0,
+    const product = {
+      name: form.name.value,
+      condition: form.condition.value,
+      buyValue: form.buyValue.value,
+      sellValue: form.sellValue.value,
+      contact: form.contact.value,
+      purchaseYear: form.purchaseYear.value,
+      catagory: form.catagory.value,
+      image: form.image.value,
+      sellerID: user.uid,
+      sellerName: user.displayName,
+      sellerEmail: user.email,
+      postedTime: time,
     };
-    //console.log(service);
+    console.log(product);
 
-    fetch("https://tiffinbhai-server.vercel.app/addService", {
+    // //console.log(service);
+
+    fetch("http://localhost:5000/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(service),
+      body: JSON.stringify(product),
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("New Service Added", {
+        toast.success("Product Successfully Added", {
           position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
         });
         form.reset();
+        navigate("/my-products");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error("There is A Error");
+      });
   };
   return (
     <div className="my-5">
       <div className="container mt-5 pt-5">
-        <div className="add-service-form-container">
-          <div>
-            <h2 className="border-start border-5 border-primary ps-4 mb-5">
-              Add Your Books For Sell
-            </h2>{" "}
+        <div className="title pt-5">
+          <Title>Add your Product to Our Store</Title>
+        </div>
+
+        <div className="add-service-container pt-5 row">
+          <div className="add-service-form-container col-12 col-md-8">
             <hr />
-            <form onSubmit={handleSubmit} className="w-75">
+            <form onSubmit={handleSubmit} className="">
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Book Name
                 </label>
                 <input
                   type="text"
-                  name="ServiceName"
+                  name="name"
                   className="form-control"
                   placeholder="Enter your books name"
                   required
                 />
               </div>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Select Product Condition</Form.Label>
-                <Form.Select aria-label="Default select example" name="role">
-                  <option value="buyer" selected>
-                    Excellent
-                  </option>
-                  <option value="seller">Good</option>
-                  <option value="seller">Fair</option>
-                </Form.Select>
-              </Form.Group>
+              <div className="row">
+                <Form.Group className="col mb-3">
+                  <Form.Label>Select Catagory</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="catagory"
+                  >
+                    <option value="1" selected>
+                      Academic
+                    </option>
+                    <option value="2">Fiction</option>
+                    <option value="3">Non-Fiction</option>
+                    <option value="4">Historical</option>
+                  </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="col mb-3">
+                  <Form.Label>Select Product Condition</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    name="condition"
+                  >
+                    <option value="excellent" selected>
+                      Excellent
+                    </option>
+                    <option value="good">Good</option>
+                    <option value="fair">Fair</option>
+                  </Form.Select>
+                </Form.Group>
+
+                <div className="mb-3 col">
+                  <label
+                    htmlFor="exampleFormControlTextarea1"
+                    className="form-label"
+                  >
+                    Years of Purchase
+                  </label>
+                  <input
+                    type="text"
+                    name="purchaseYear"
+                    className="form-control"
+                    placeholder="Which year you Purchase it?"
+                    required
+                  />
+                </div>
+              </div>
 
               <div className="mb-3">
                 <label
@@ -87,7 +131,7 @@ const AddProduct = () => {
                   Description
                 </label>
                 <textarea
-                  name="desc"
+                  name="description"
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
@@ -108,15 +152,61 @@ const AddProduct = () => {
                   required
                 />
               </div>
+              <div className="row">
+                <div className="mb-3  col">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    Buying Price
+                  </label>
+                  <input
+                    name="buyValue"
+                    type="number"
+                    className="form-control"
+                    placeholder="enter your Buying Price"
+                    required
+                  />
+                </div>
+                <div className="mb-3 col">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    Selling Price
+                  </label>
+                  <input
+                    name="sellValue"
+                    type="number"
+                    className="form-control"
+                    placeholder="enter your Selling Price"
+                    required
+                  />
+                </div>
+              </div>
+
               <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">
-                  Price
+                <label
+                  htmlFor="exampleFormControlTextarea1"
+                  className="form-label"
+                >
+                  User Location
                 </label>
                 <input
-                  name="pricing"
-                  type="number"
+                  type="text"
+                  name="location"
                   className="form-control"
-                  placeholder="enter your Book Price"
+                  placeholder="Enter Selling Location"
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label
+                  htmlFor="exampleFormControlTextarea1"
+                  className="form-label"
+                >
+                  Seller Mobile Number
+                </label>
+                <input
+                  type="text"
+                  name="contact"
+                  className="form-control"
+                  placeholder="Enter Selling Location"
                   required
                 />
               </div>
@@ -125,6 +215,13 @@ const AddProduct = () => {
                 Submit
               </button>
             </form>
+          </div>
+          <div className="img col-12 col-md-4 d-none d-md-block">
+            <img
+              src="https://compote.slate.com/images/a92fef3e-c1db-4cbf-93da-dae90c0b9388.jpeg?crop=4395%2C2930%2Cx0%2Cy0"
+              alt=""
+              className="img-fluid h-100 rounded w-100 "
+            />
           </div>
         </div>
       </div>

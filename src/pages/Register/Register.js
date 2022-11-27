@@ -72,6 +72,7 @@ const Register = () => {
       .then((res) => {
         toast.success("Registration Successfull");
         const user = res.user;
+        user.displayName = name;
         console.log(user);
         const userInfo = {
           displayName: name,
