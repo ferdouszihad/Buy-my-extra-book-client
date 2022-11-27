@@ -7,7 +7,7 @@ const Error404 = () => {
       <img
         src="https://cdn.dribbble.com/users/962778/screenshots/4107007/search_states.gif"
         alt=""
-        className="w-1/2 d-block mx-auto"
+        className="img-fluid d-block mx-auto"
       />
     </div>
   );
