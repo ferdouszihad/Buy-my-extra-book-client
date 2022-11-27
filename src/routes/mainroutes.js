@@ -6,6 +6,7 @@ import Error404 from "../pages/Error404";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import SellerRoute from "./SellerRoute";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
 
       {
         path: "add-product",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
       },
       {
         path: "*",

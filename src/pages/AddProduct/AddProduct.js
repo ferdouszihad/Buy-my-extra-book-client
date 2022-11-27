@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 const AddProduct = () => {
@@ -56,7 +57,7 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit} className="w-75">
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
-                  Name
+                  Book Name
                 </label>
                 <input
                   type="text"
@@ -66,6 +67,17 @@ const AddProduct = () => {
                   required
                 />
               </div>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Select Product Condition</Form.Label>
+                <Form.Select aria-label="Default select example" name="role">
+                  <option value="buyer" selected>
+                    Excellent
+                  </option>
+                  <option value="seller">Good</option>
+                  <option value="seller">Fair</option>
+                </Form.Select>
+              </Form.Group>
 
               <div className="mb-3">
                 <label
