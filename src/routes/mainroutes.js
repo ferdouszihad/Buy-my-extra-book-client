@@ -4,12 +4,12 @@ import AddProduct from "../pages/AddProduct/AddProduct";
 import Blog from "../pages/Blog/Blog";
 import AllCatagory from "../pages/AllCatagory/AllCatagory";
 import Error404 from "../pages/Error404";
-
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import SellerRoute from "./SellerRoute";
 import MyProducts from "../pages/MyProducts.js/MyProducts";
+import PrivateRoute from "./PrivateRoute";
+import CatagoryProducts from "../pages/CatagoryProducts/CatagoryProducts";
 
 const router = createBrowserRouter([
   {
@@ -41,21 +41,31 @@ const router = createBrowserRouter([
         path: "catagories",
         element: <AllCatagory></AllCatagory>,
       },
+      {
+        path: "catagories/:cid",
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/catagories/${params.cid}`),
+        element: (
+          <PrivateRoute>
+            <CatagoryProducts></CatagoryProducts>
+          </PrivateRoute>
+        ),
+      },
 
       {
         path: "add-product",
         element: (
-          <SellerRoute>
+          <PrivateRoute>
             <AddProduct></AddProduct>
-          </SellerRoute>
+          </PrivateRoute>
         ),
       },
       {
         path: "my-products",
         element: (
-          <SellerRoute>
+          <PrivateRoute>
             <MyProducts></MyProducts>
-          </SellerRoute>
+          </PrivateRoute>
         ),
       },
       {

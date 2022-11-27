@@ -6,12 +6,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { AuthContext } from "../../../context/UserContext";
 import { Button } from "react-bootstrap";
-import useSeller from "../../../hooks/useSeller";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [isSeller] = useSeller(user?.email);
-  console.log(isSeller);
   const handleLogOut = () => {
     logOut()
       .then(alert("Log-Out Successfull"))

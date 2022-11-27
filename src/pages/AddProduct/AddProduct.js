@@ -27,6 +27,7 @@ const AddProduct = () => {
       sellerName: user.displayName,
       sellerEmail: user.email,
       postedTime: time,
+      location: form.location.value,
     };
     console.log(product);
 
