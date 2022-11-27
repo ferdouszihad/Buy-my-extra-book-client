@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const addUserToDB = (user) => {
-    fetch("http://localhost:5000/addUser", {
+    fetch("https://buymy-book-server.vercel.app/addUser", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -44,7 +44,9 @@ const router = createBrowserRouter([
       {
         path: "catagories/:cid",
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/catagories/${params.cid}`),
+          fetch(
+            `https://buymy-book-server.vercel.app/catagories/${params.cid}`
+          ),
         element: (
           <PrivateRoute>
             <CatagoryProducts></CatagoryProducts>
