@@ -1,33 +1,26 @@
 import React, { useContext, useState } from "react";
-import { Spinner } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/UserContext";
+import useSeller from "../hooks/useSeller";
+import LodingAnimation from "../pages/shared/LodingAnimation";
 
 const SellerRoute = ({ children }) => {
-  const [isSeller, setIsSeller] = useState(false);
   const { user, loading } = useContext(AuthContext);
+  const [isSeller, isSellerLoading] = useSeller(user?.email);
+  console.log(isSeller);
 
-  if (loading === true) {
-    return (
-      <div className="mx-auto text-center my-5">
-        <Spinner animation="grow" size="sm" />
-        <Spinner animation="grow" />
-      </div>
-    );
+  const location = useLocation();
+
+  if (loading || isSellerLoading) {
+    return <LodingAnimation></LodingAnimation>;
   }
 
-  if (user && user.uid) {
-    fetch(`http://localhost:5000/user/${user.uid}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setIsSeller(true);
-      })
-      .catch((err) => console.log(err));
-    if (isSeller) {
-      return children;
-    }
-  }
-  return <Navigate to="/login"></Navigate>;
+  if (user && isSeller) {
+    console.log(isSeller);
+    return children;
+  } else console.log(isSeller);
+
+  return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
 export default SellerRoute;

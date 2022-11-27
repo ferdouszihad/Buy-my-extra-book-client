@@ -34,6 +34,7 @@ const Register = () => {
     googleSignIn()
       .then((res) => {
         const user = res.user;
+        console.log(user);
         setUser(user);
         toast.success("Registration Successfull");
         const myUser = {
@@ -71,6 +72,7 @@ const Register = () => {
       .then((res) => {
         toast.success("Registration Successfull");
         const user = res.user;
+        console.log(user);
         const userInfo = {
           displayName: name,
           photoURL:
