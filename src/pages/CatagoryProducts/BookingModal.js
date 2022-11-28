@@ -25,7 +25,7 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
       orderTime: time,
       ...bookingInfo,
     };
-    fetch(`http://localhost:5000/bookPurchase/${bookId}`, {
+    fetch(`https://buymy-book-server.vercel.app/bookPurchase/${bookId}`, {
       method: "PUT",
     })
       .then((res) => res.json())
