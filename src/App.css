@@ -38,6 +38,14 @@
     
 }
 
+.dashboard-home{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .dashboard-links a{
     display: block;
     margin: 10px;

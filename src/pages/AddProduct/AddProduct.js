@@ -56,13 +56,13 @@ const AddProduct = () => {
   };
   return (
     <div className="my-5">
-      <div className="container mt-5 pt-5">
-        <div className="title pt-5">
+      <div className="container">
+        <div className="title">
           <Title>Add your Product to Our Store</Title>
         </div>
 
-        <div className="add-service-container pt-5 row">
-          <div className="add-service-form-container col-12 col-md-8">
+        <div className="add-service-container ">
+          <div className="add-service-form-container">
             <hr />
             <form onSubmit={handleSubmit} className="">
               <div className="mb-3">
@@ -208,7 +208,7 @@ const AddProduct = () => {
                   type="text"
                   name="contact"
                   className="form-control"
-                  placeholder="Enter Selling Location"
+                  placeholder="Enter Selling Contact No."
                   required
                 />
               </div>
@@ -217,13 +217,6 @@ const AddProduct = () => {
                 Submit
               </button>
             </form>
-          </div>
-          <div className="img col-12 col-md-4 d-none d-md-block">
-            <img
-              src="https://compote.slate.com/images/a92fef3e-c1db-4cbf-93da-dae90c0b9388.jpeg?crop=4395%2C2930%2Cx0%2Cy0"
-              alt=""
-              className="img-fluid h-100 rounded w-100 "
-            />
           </div>
         </div>
       </div>

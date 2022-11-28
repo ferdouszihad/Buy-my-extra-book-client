@@ -7,12 +7,12 @@ import Error404 from "../pages/Error404";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import MyProducts from "../pages/MyProducts.js/MyProducts";
 import PrivateRoute from "./PrivateRoute";
 import CatagoryProducts from "../pages/CatagoryProducts/CatagoryProducts";
 import AllSellers from "../pages/AllSellers/AllSellers";
 import LayOutDashboard from "../layouts/LayOutDashboard";
 import AllBuyers from "../pages/AllBuyers/AllBuyers";
+import SellerProducts from "../pages/SellerProducts/SellerProducts";
 
 const router = createBrowserRouter([
   {
@@ -64,23 +64,6 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
-      {
-        path: "add-product",
-        element: (
-          <PrivateRoute>
-            <AddProduct></AddProduct>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "my-products",
-        element: (
-          <PrivateRoute>
-            <MyProducts></MyProducts>
-          </PrivateRoute>
-        ),
-      },
       {
         path: "*",
         element: <Error404></Error404>,
@@ -102,9 +85,25 @@ const router = createBrowserRouter([
         element: <AllSellers></AllSellers>,
       },
       {
+        path: "/dashboard/",
+        element: (
+          <h2 className="display-1 dashboard-home ">Welcome to Dashboard</h2>
+        ),
+      },
+      {
         path: "/dashboard/all-buyer",
         loader: async () => fetch("http://localhost:5000/all-buyer"),
         element: <AllBuyers></AllBuyers>,
+      },
+      {
+        path: "/dashboard/addProduct",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/dashboard/myProducts/:email",
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/seller-products/${params.email}`),
+        element: <SellerProducts></SellerProducts>,
       },
     ],
   },
