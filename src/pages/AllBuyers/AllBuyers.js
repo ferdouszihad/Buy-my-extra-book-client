@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import Title from "../shared/Title";
 import BuyerCard from "./BuyerCard";
 
 const AllBuyers = () => {
-  const buyers = useLoaderData();
+  const data = useLoaderData();
+  const [buyers, setBuyers] = useState(data);
+
+  const deleteHandler = (email) => {
+    console.log(email);
+    const buyersRemaining = buyers.filter((buyer) => buyer.email !== email);
+    setBuyers(buyersRemaining);
+
+    fetch(`http://localhost:5000/user/${email}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("User Deleted from Database", {
+          position: "top-center",
+        });
+      })
+      .catch((err) => console.log("error"));
+  };
+
   console.log(buyers);
   return (
     <div className="">
@@ -21,7 +43,11 @@ const AllBuyers = () => {
         </div>
 
         {buyers.map((buyer) => (
-          <BuyerCard key={buyer.uid} buyer={buyer}></BuyerCard>
+          <BuyerCard
+            key={buyer.uid}
+            buyer={buyer}
+            deleteHandler={deleteHandler}
+          ></BuyerCard>
         ))}
       </div>
     </div>

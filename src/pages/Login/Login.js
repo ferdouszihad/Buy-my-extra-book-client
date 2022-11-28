@@ -13,16 +13,41 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const addUserToDB = (user) => {
+    fetch("https://buymy-book-server.vercel.app/addUser", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("User Added to Our System");
+        console.log(data);
+      })
+      .catch((err) => toast(err));
+  };
+
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((res) => {
         const user = res.user;
+        console.log(user);
         setUser(user);
-        toast.success("Welcome!! You are logged in");
+        toast.success("Login Successfull");
+        const myUser = {
+          uid: user.uid,
+          name: user.displayName,
+          contact: user.phoneNumber,
+          role: "buyer",
+          email: user.email,
+        };
+        addUserToDB(myUser);
         navigate("/home");
       })
       .catch((error) => {
-        toast.error("Sign in Failed");
+        alert("Cant sign in");
         console.error(error);
       });
   };

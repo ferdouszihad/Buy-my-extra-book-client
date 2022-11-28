@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const SellerCard = ({ seller }) => {
+const SellerCard = ({ seller, deleteHandler }) => {
   const { name, contact, email } = seller;
   return (
     <div className="row border align-items-center">
@@ -13,7 +13,9 @@ const SellerCard = ({ seller }) => {
         </div>
       </div>
       <div className="col-md-2 text-center  py-3 d-flex flex-wrap gap-2">
-        <Button variant="danger">Delete Seller</Button>
+        <Button variant="danger" onClick={() => deleteHandler(email)}>
+          Delete Seller
+        </Button>
         <Button variant="primary">Verify Seller</Button>
       </div>
     </div>

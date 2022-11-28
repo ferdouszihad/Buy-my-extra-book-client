@@ -10,6 +10,7 @@ import {
   onAuthStateChanged,
   signOut,
   updateProfile,
+  deleteUser,
 } from "firebase/auth";
 import { useEffect } from "react";
 
@@ -37,6 +38,9 @@ const UserContext = ({ children }) => {
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
   };
+  const removeUser = (user) => {
+    return deleteUser(user);
+  };
 
   const logOut = () => {
     return signOut(auth);
@@ -61,6 +65,7 @@ const UserContext = ({ children }) => {
     logOut,
     googleSignIn,
     updateUser,
+    removeUser,
   };
 
   return (
