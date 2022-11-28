@@ -61,7 +61,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         setUser(user);
-        alert("Successfull");
+        toast.success("User Logged in Successfully");
         console.log(user);
         form.reset();
         navigate("/home");

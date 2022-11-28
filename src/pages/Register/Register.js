@@ -76,8 +76,6 @@ const Register = () => {
         console.log(user);
         const userInfo = {
           displayName: name,
-          photoURL:
-            "https://lh3.googleusercontent.com/-UXGcS_7l_08/AAAAAAAAAAI/AAAAAAAAAAA/ADleYaU385b3OpixuYV7lj_ki-_yXr2Dhg/photo.jpg?sz=46",
           phoneNumber: contact,
         };
 

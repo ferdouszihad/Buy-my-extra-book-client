@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/UserContext";
 import AdvertiseItems from "./AdvertiseItems";
 import Banner from "./Banner";
 import Catagories from "./Catagories";

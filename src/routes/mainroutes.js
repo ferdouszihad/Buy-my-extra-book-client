@@ -14,6 +14,9 @@ import LayOutDashboard from "../layouts/LayOutDashboard";
 import AllBuyers from "../pages/AllBuyers/AllBuyers";
 import SellerProducts from "../pages/SellerProducts/SellerProducts";
 import Booking from "../pages/Booking.js/Booking";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
+import BuyerRoute from "./BuyerRoute";
 
 const router = createBrowserRouter([
   {
@@ -46,14 +49,6 @@ const router = createBrowserRouter([
         element: <AllCatagory></AllCatagory>,
       },
       {
-        path: "all-sellers",
-        element: (
-          <PrivateRoute>
-            <AllSellers></AllSellers>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "catagories/:cid",
         loader: async ({ params }) =>
           fetch(
@@ -84,10 +79,14 @@ const router = createBrowserRouter([
         path: "/dashboard/all-seller",
         loader: async () =>
           fetch("https://buymy-book-server.vercel.app/all-seller"),
-        element: <AllSellers></AllSellers>,
+        element: (
+          <AdminRoute>
+            <AllSellers></AllSellers>
+          </AdminRoute>
+        ),
       },
       {
-        path: "/dashboard/",
+        path: "/dashboard",
         element: (
           <h2 className="display-1 dashboard-home ">Welcome to Dashboard</h2>
         ),
@@ -96,11 +95,19 @@ const router = createBrowserRouter([
         path: "/dashboard/all-buyer",
         loader: async () =>
           fetch("https://buymy-book-server.vercel.app/all-buyer"),
-        element: <AllBuyers></AllBuyers>,
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/addProduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myProducts/:email",
@@ -108,7 +115,11 @@ const router = createBrowserRouter([
           fetch(
             `https://buymy-book-server.vercel.app/seller-products/${params.email}`
           ),
-        element: <SellerProducts></SellerProducts>,
+        element: (
+          <SellerRoute>
+            <SellerProducts></SellerProducts>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myBookings/:email",
@@ -116,7 +127,11 @@ const router = createBrowserRouter([
           fetch(
             `https://buymy-book-server.vercel.app/myBookings/${params.email}`
           ),
-        element: <Booking></Booking>,
+        element: (
+          <BuyerRoute>
+            <Booking></Booking>
+          </BuyerRoute>
+        ),
       },
     ],
   },
