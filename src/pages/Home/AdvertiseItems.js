@@ -6,7 +6,7 @@ const AdvertiseItems = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/advertiseItems")
+    fetch("https://buymy-book-server.vercel.app/advertiseItems")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);

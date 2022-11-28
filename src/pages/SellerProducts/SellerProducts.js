@@ -9,7 +9,7 @@ const SellerProducts = () => {
   const [products, setProducts] = useState(data);
   const [advertiseStatus, setAdvertiseStatus] = useState(false);
   const handleAdv = (id) => {
-    fetch(`http://localhost:5000/product/MakeAd/${id}`, {
+    fetch(`https://buymy-book-server.vercel.app/product/MakeAd/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -23,7 +23,7 @@ const SellerProducts = () => {
     const productsRemaining = products.filter((product) => product._id !== id);
     setProducts(productsRemaining);
 
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://buymy-book-server.vercel.app/product/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

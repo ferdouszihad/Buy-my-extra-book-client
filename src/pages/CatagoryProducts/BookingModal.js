@@ -6,13 +6,14 @@ import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/UserContext";
+import useBuyer from "../../hooks/useBuyer";
 
 const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
   const navigate = useNavigate();
   const time = format(new Date(), "PPpp");
 
   const { user } = useContext(AuthContext);
-  const { name, price } = bookingInfo;
+  const { bookName, price, bookId } = bookingInfo;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +26,14 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
       orderTime: time,
       ...bookingInfo,
     };
+    fetch(`http://localhost:5000/bookPurchase/${bookId}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Product is Listed for Booking");
+      })
+      .catch((err) => console.log(err));
 
     fetch("https://buymy-book-server.vercel.app/makeOrder", {
       method: "POST",
@@ -85,7 +94,7 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
 
             <Form.Group className="mb-3" controlId="bookName">
               <Form.Label>Book Name</Form.Label>
-              <Form.Control type="text" value={name} disabled />
+              <Form.Control type="text" value={bookName} disabled />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="bookName">
