@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-const ProductCard = ({ product, deleteHandler }) => {
-  const { _id, name, status, sellValue, image } = product;
+const ProductCard = ({
+  product,
+  deleteHandler,
+  handleAdv,
+  advertiseStatus,
+  setAdvertiseStatus,
+}) => {
+  const { _id, name, status, sellValue, image, isAdv } = product;
+  [advertiseStatus, setAdvertiseStatus] = useState(isAdv);
+
+  const handleAdvertiesment = (id) => {
+    setAdvertiseStatus(true);
+    handleAdv(id);
+  };
   return (
     <div className="row border align-items-center">
       <div className="col-md-10 py-3">
@@ -12,7 +24,7 @@ const ProductCard = ({ product, deleteHandler }) => {
               src={image}
               alt=""
               className="img-fluid"
-              style={{ maxWidth: "250px" }}
+              style={{ maxWidth: "200px" }}
             />
           </div>
           <div className="info">
@@ -20,15 +32,20 @@ const ProductCard = ({ product, deleteHandler }) => {
             <p>name : {name}</p>
             <p>Price : {sellValue} Taka</p>
             <p>Status : {status === "none" ? "Not Sold" : status}</p>
+            {advertiseStatus && (
+              <span className="text-success fw-bold">Advetising to User</span>
+            )}
           </div>
         </div>
       </div>
       <div className="col-md-2 text-center  py-3 d-flex flex-wrap gap-2">
-        {status !== "sold" ? (
-          <Button variant="success">Advertise</Button>
+        {!advertiseStatus ? (
+          <Button variant="success" onClick={() => handleAdvertiesment(_id)}>
+            Advertise
+          </Button>
         ) : (
           <>
-            <span className="text-success">Sold</span>
+            <span className="text-success fw-bold">Advetising</span>
           </>
         )}
 

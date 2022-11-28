@@ -29,6 +29,7 @@ const AddProduct = () => {
       postedTime: time,
       location: form.location.value,
       status: "none",
+      isAdv: false,
     };
     console.log(product);
 

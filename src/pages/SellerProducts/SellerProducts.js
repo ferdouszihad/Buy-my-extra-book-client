@@ -1,3 +1,4 @@
+import { set } from "date-fns";
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -7,6 +8,17 @@ import ProductCard from "./ProductCard";
 const SellerProducts = () => {
   const data = useLoaderData();
   const [products, setProducts] = useState(data);
+  const [advertiseStatus, setAdvertiseStatus] = useState(false);
+  const handleAdv = (id) => {
+    fetch(`http://localhost:5000/product/MakeAd/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Products now Listed to Our Advertisement Section");
+      })
+      .catch((err) => console.log(err));
+  };
 
   const deleteHandler = (id) => {
     const productsRemaining = products.filter((product) => product._id !== id);
@@ -57,7 +69,10 @@ const SellerProducts = () => {
           <ProductCard
             key={product._id}
             deleteHandler={deleteHandler}
+            handleAdv={handleAdv}
             product={product}
+            advertiseStatus={advertiseStatus}
+            setAdvertiseStatus={setAdvertiseStatus}
           ></ProductCard>
         ))}
       </div>
