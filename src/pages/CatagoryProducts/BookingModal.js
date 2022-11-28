@@ -6,7 +6,6 @@ import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/UserContext";
-import useBuyer from "../../hooks/useBuyer";
 
 const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
   const navigate = useNavigate();
