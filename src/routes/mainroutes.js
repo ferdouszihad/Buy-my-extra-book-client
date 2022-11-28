@@ -97,6 +97,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/all-seller",
+        loader: async () => fetch("http://localhost:5000/all-seller"),
         element: <AllSellers></AllSellers>,
       },
     ],

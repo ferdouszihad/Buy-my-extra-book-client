@@ -11,7 +11,7 @@ const LayOutDashboard = () => {
       </header>
       <main className="pt-5">
         <div className="container my-5">
-          <div className="row mt-5">
+          <div className="row mt-5 g-2">
             <div className="col-md-3">
               <DashboardNav></DashboardNav>
             </div>
