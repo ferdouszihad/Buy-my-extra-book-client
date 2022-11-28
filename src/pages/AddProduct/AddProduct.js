@@ -47,7 +47,7 @@ const AddProduct = () => {
           position: "top-center",
         });
         form.reset();
-        navigate("/my-products");
+        navigate(`/dashboard/myProducts/${user.email}`);
       })
       .catch((err) => {
         console.log(err);

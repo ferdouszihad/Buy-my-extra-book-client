@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import Title from "../shared/Title";
 import ProductCard from "./ProductCard";
 
 const SellerProducts = () => {
-  const products = useLoaderData();
-  console.log(products);
+  const data = useLoaderData();
+  const [products, setProducts] = useState(data);
+
+  const deleteHandler = (id) => {
+    const productsRemaining = products.filter((product) => product._id !== id);
+    setProducts(productsRemaining);
+
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Product Deleted from Database", {
+          position: "top-center",
+        });
+      })
+      .catch((err) => console.log("error"));
+  };
   return (
     <div className="">
       <div className="title pt-3">
@@ -36,7 +54,11 @@ const SellerProducts = () => {
         )}
 
         {products.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
+          <ProductCard
+            key={product._id}
+            deleteHandler={deleteHandler}
+            product={product}
+          ></ProductCard>
         ))}
       </div>
     </div>
