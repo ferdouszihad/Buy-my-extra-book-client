@@ -24,8 +24,9 @@ const ProductSingle = ({ product }) => {
   } = product;
 
   const bookingInfo = {
+    bookImage: image,
     bookId: _id,
-    name: name,
+    bookName: name,
     price: sellValue,
     sellerContact: contact,
     sellerEmail: sellerEmail,

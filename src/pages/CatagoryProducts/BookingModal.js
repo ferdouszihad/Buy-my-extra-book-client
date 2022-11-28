@@ -21,9 +21,9 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
       BuyerName: form.name.value,
       BuyerEmail: form.email.value,
       BuyerContact: form.contact.value,
-      bookDetails: bookingInfo,
       meetingLocation: form.location.value,
       orderTime: time,
+      ...bookingInfo,
     };
 
     fetch("https://buymy-book-server.vercel.app/makeOrder", {
@@ -39,7 +39,7 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
           position: "top-center",
         });
         form.reset();
-        navigate("/my-orders");
+        navigate(`/dashboard/myBookings/${user.email}`);
       })
       .catch((err) => {
         console.log(err);

@@ -13,6 +13,7 @@ import AllSellers from "../pages/AllSellers/AllSellers";
 import LayOutDashboard from "../layouts/LayOutDashboard";
 import AllBuyers from "../pages/AllBuyers/AllBuyers";
 import SellerProducts from "../pages/SellerProducts/SellerProducts";
+import Booking from "../pages/Booking.js/Booking";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,12 @@ const router = createBrowserRouter([
         loader: async ({ params }) =>
           fetch(`http://localhost:5000/seller-products/${params.email}`),
         element: <SellerProducts></SellerProducts>,
+      },
+      {
+        path: "/dashboard/myBookings/:email",
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/myBookings/${params.email}`),
+        element: <Booking></Booking>,
       },
     ],
   },

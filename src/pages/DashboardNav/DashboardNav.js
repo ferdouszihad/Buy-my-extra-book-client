@@ -28,7 +28,10 @@ const DashboardNav = () => {
         <Link to="all-buyer" className="btn btn-outline-primary">
           All Buyer
         </Link>
-        <Link to="myBookings" className="btn btn-outline-primary">
+        <Link
+          to={`myBookings/${user.email}`}
+          className="btn btn-outline-primary"
+        >
           My Bookings
         </Link>
       </div>
