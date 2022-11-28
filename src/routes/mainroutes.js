@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import CatagoryProducts from "../pages/CatagoryProducts/CatagoryProducts";
 import AllSellers from "../pages/AllSellers/AllSellers";
 import LayOutDashboard from "../layouts/LayOutDashboard";
+import AllBuyers from "../pages/AllBuyers/AllBuyers";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,11 @@ const router = createBrowserRouter([
         path: "/dashboard/all-seller",
         loader: async () => fetch("http://localhost:5000/all-seller"),
         element: <AllSellers></AllSellers>,
+      },
+      {
+        path: "/dashboard/all-buyer",
+        loader: async () => fetch("http://localhost:5000/all-buyer"),
+        element: <AllBuyers></AllBuyers>,
       },
     ],
   },

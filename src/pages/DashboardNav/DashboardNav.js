@@ -6,7 +6,7 @@ const DashboardNav = () => {
   return (
     <section id="nav" className="p-3 rounded-3" style={{ background: "#ddd" }}>
       <Title>Admin Dashboard</Title>
-      <div className="dashboard-links d-flex justify-content-center d-md-block mt-5">
+      <div className="dashboard-links d-flex flex-wrap justify-content-center d-md-block mt-5">
         <Link to="all-seller" className="btn btn-outline-primary">
           All Seller
         </Link>
