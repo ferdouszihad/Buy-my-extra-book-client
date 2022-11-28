@@ -37,3 +37,8 @@
     background-color: rgba(0, 0, 0, 0.916);
     
 }
+
+.dashboard-links a{
+    display: block;
+    margin: 10px 0;
+}

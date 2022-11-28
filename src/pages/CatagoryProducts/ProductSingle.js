@@ -47,7 +47,10 @@ const ProductSingle = ({ product }) => {
               <p>Selling Price : {sellValue}</p>
               <p>Buying Price : {buyValue}</p>
             </div>
-            <p>Book Purchased at {purchaseYear} </p>
+            <p className="mt-3 text-center">
+              posted by {sellerName}{" "}
+              <GoVerified className="text-primary"></GoVerified>
+            </p>
           </div>
 
           <Button
@@ -57,10 +60,7 @@ const ProductSingle = ({ product }) => {
           >
             Book Now
           </Button>
-          <p className="mt-3 text-center">
-            posted by {sellerName}{" "}
-            <GoVerified className="text-primary"></GoVerified>
-          </p>
+          <p className="mt-3 text-center">Book Purchased at {purchaseYear} </p>
           <div className="card-footer mt-3 text-center">
             <small>posted time {postedTime}</small>
           </div>

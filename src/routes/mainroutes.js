@@ -10,6 +10,8 @@ import Register from "../pages/Register/Register";
 import MyProducts from "../pages/MyProducts.js/MyProducts";
 import PrivateRoute from "./PrivateRoute";
 import CatagoryProducts from "../pages/CatagoryProducts/CatagoryProducts";
+import AllSellers from "../pages/AllSellers/AllSellers";
+import LayOutDashboard from "../layouts/LayOutDashboard";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "catagories",
         element: <AllCatagory></AllCatagory>,
+      },
+      {
+        path: "all-sellers",
+        element: (
+          <PrivateRoute>
+            <AllSellers></AllSellers>
+          </PrivateRoute>
+        ),
       },
       {
         path: "catagories/:cid",
@@ -73,6 +83,21 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <Error404></Error404>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+
+    element: (
+      <PrivateRoute>
+        <LayOutDashboard></LayOutDashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/all-seller",
+        element: <AllSellers></AllSellers>,
       },
     ],
   },

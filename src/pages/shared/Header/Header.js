@@ -56,8 +56,8 @@ const Header = () => {
               <Nav className="justify-content-end fs-5 flex-grow-1 pe-3 gap-4 align-items-center">
                 <Link to="/home">Home</Link>
                 <Link to="/Catagories">Catagories</Link>
-                <Link to="/add-product">Add a Product</Link>
-                <Link to="/my-products">My Products</Link>
+                {user?.uid && <Link to="/dashboard">Dashboard</Link>}
+
                 <Link to="/blog">Blogs</Link>
                 {user && user.uid ? (
                   <Button variant="primary" onClick={handleLogOut}>
