@@ -82,7 +82,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/all-seller",
-        loader: async () => fetch("http://localhost:5000/all-seller"),
+        loader: async () =>
+          fetch("https://buymy-book-server.vercel.app/all-seller"),
         element: <AllSellers></AllSellers>,
       },
       {
@@ -93,7 +94,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/all-buyer",
-        loader: async () => fetch("http://localhost:5000/all-buyer"),
+        loader: async () =>
+          fetch("https://buymy-book-server.vercel.app/all-buyer"),
         element: <AllBuyers></AllBuyers>,
       },
       {
@@ -103,13 +105,17 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myProducts/:email",
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/seller-products/${params.email}`),
+          fetch(
+            `https://buymy-book-server.vercel.app/seller-products/${params.email}`
+          ),
         element: <SellerProducts></SellerProducts>,
       },
       {
         path: "/dashboard/myBookings/:email",
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/myBookings/${params.email}`),
+          fetch(
+            `https://buymy-book-server.vercel.app/myBookings/${params.email}`
+          ),
         element: <Booking></Booking>,
       },
     ],
