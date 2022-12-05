@@ -12,14 +12,14 @@
     color:#fff !important;
 }
 #banner{
-    background-image: url('https://raw.githubusercontent.com/Techsoros/money-manager/main/Banner.jpg');
+    background-image: url('https://raw.githubusercontent.com/Ferdouszihad/money-manager/main/Banner.jpg');
     height: 100vh;
     background-position: center left;
     display: flex;
     align-items: center;
 }
 .success-bg{
-    background-image: url('https://techsoros.github.io/taxicab/img/testimonibg.png');
+    background-image: url('https://ferdouszihad.github.io/taxicab/img/testimonibg.png');
     background-attachment: fixed ;
 }
 .success-box div{
