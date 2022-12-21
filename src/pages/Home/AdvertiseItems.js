@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LodingAnimation from "../shared/LodingAnimation";
 import Title from "../shared/Title";
 import TopItem from "./TopItem";
 
@@ -10,7 +11,9 @@ const AdvertiseItems = () => {
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
-  console.log(items);
+  if (!items) {
+    return <LodingAnimation></LodingAnimation>;
+  }
 
   return (
     <div className="">
@@ -18,7 +21,7 @@ const AdvertiseItems = () => {
         <section className="py-5">
           <Title>Products from Our Seller</Title>
           <div className="item-container container my-5">
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
               {items.map((item) => (
                 <TopItem key={item._id} product={item}></TopItem>
               ))}

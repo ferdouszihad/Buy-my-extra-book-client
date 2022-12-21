@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LodingAnimation from "../shared/LodingAnimation";
 import Title from "../shared/Title";
 import CatagorySingle from "./CatagorySingle";
 
@@ -10,6 +11,10 @@ const Catagories = () => {
       .then((cat) => setCatagories(cat))
       .catch((err) => console.log(err));
   }, []);
+
+  if (catagories.length === 0) {
+    return <LodingAnimation></LodingAnimation>;
+  }
   return (
     <section className="py-5">
       <Title>Choose Products By Catagory</Title>

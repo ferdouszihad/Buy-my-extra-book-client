@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 const Banner = () => {
   return (
@@ -22,9 +23,11 @@ const Banner = () => {
           repeat={Infinity} // Repeat this Animation Sequence infinitely
         />
 
-        <Button variant="outline-light" className="d-block mt-4 btn-lg">
-          Buy Books from $1.99
-        </Button>
+        <Link to="/catagories" style={{ textDecoration: "none" }}>
+          <Button variant="outline-light" className="d-block mt-4 btn-lg">
+            Buy Books from $1.99
+          </Button>
+        </Link>
       </div>
     </section>
   );

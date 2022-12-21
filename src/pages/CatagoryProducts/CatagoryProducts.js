@@ -1,11 +1,17 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import LodingAnimation from "../shared/LodingAnimation";
 import Title from "../shared/Title";
 import ProductSingle from "./ProductSingle";
 
 const CatagoryProducts = () => {
-  const { catagoryInfo, catagoryProducts } = useLoaderData();
+  const data = useLoaderData();
+  const { catagoryInfo, catagoryProducts } = data;
   const { name, description } = catagoryInfo;
+
+  if (!data) {
+    return <LodingAnimation></LodingAnimation>;
+  }
   return (
     <div className="pt-5 mt-5">
       <div className="title py-5">
@@ -24,6 +30,7 @@ const CatagoryProducts = () => {
         ) : (
           ""
         )}
+
         <div className="products-container row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4 ">
           {catagoryProducts.map((product) => (
             <ProductSingle key={product._id} product={product}></ProductSingle>
