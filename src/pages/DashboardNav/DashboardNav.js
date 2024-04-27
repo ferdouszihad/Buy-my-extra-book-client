@@ -20,7 +20,10 @@ const DashboardNav = () => {
       className="p-3 rounded-3"
       style={{ background: "#ddd", position: "sticky", top: "200px" }}
     >
-      <Title>Admin Dashboard</Title>
+      <Title>
+        {isAdmin && "Admin"} {isBuyer && "Buyer"} {isSeller && "Seller"}{" "}
+        Dashboard
+      </Title>
       <div className="dashboard-links d-flex flex-wrap justify-content-center d-md-block mt-5">
         {isAdmin && (
           <>
