@@ -51,9 +51,7 @@ const router = createBrowserRouter([
       {
         path: "catagories/:cid",
         loader: async ({ params }) =>
-          fetch(
-            `https://buymy-book-server.vercel.app/catagories/${params.cid}`
-          ),
+          fetch(`https://bmb-server.vercel.app/catagories/${params.cid}`),
         element: (
           <PrivateRoute>
             <CatagoryProducts></CatagoryProducts>
@@ -77,8 +75,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/all-seller",
-        loader: async () =>
-          fetch("https://buymy-book-server.vercel.app/all-seller"),
+        loader: async () => fetch("https://bmb-server.vercel.app/all-seller"),
         element: (
           <AdminRoute>
             <AllSellers></AllSellers>
@@ -93,8 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/all-buyer",
-        loader: async () =>
-          fetch("https://buymy-book-server.vercel.app/all-buyer"),
+        loader: async () => fetch("https://bmb-server.vercel.app/all-buyer"),
         element: (
           <AdminRoute>
             <AllBuyers></AllBuyers>
@@ -113,7 +109,7 @@ const router = createBrowserRouter([
         path: "/dashboard/myProducts/:email",
         loader: async ({ params }) =>
           fetch(
-            `https://buymy-book-server.vercel.app/seller-products/${params.email}`
+            `https://bmb-server.vercel.app/seller-products/${params.email}`
           ),
         element: (
           <SellerRoute>
@@ -124,9 +120,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myBookings/:email",
         loader: async ({ params }) =>
-          fetch(
-            `https://buymy-book-server.vercel.app/myBookings/${params.email}`
-          ),
+          fetch(`https://bmb-server.vercel.app/myBookings/${params.email}`),
         element: (
           <BuyerRoute>
             <Booking></Booking>

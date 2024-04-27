@@ -35,7 +35,7 @@ const AddProduct = () => {
 
     // //console.log(service);
 
-    fetch("https://buymy-book-server.vercel.app/addProduct", {
+    fetch("https://bmb-server.vercel.app/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",

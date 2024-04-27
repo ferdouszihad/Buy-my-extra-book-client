@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const addUserToDB = (user) => {
-    fetch("https://buymy-book-server.vercel.app/addUser", {
+    fetch("https://bmb-server.vercel.app/addUser", {
       method: "POST",
       headers: {
         "content-type": "application/json",

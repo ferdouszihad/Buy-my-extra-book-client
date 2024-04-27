@@ -14,7 +14,7 @@ const AllBuyers = () => {
     const buyersRemaining = buyers.filter((buyer) => buyer.email !== email);
     setBuyers(buyersRemaining);
 
-    fetch(`https://buymy-book-server.vercel.app/user/${email}`, {
+    fetch(`https://bmb-server.vercel.app/user/${email}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

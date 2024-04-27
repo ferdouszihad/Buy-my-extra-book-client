@@ -7,7 +7,7 @@ const AdvertiseItems = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("https://buymy-book-server.vercel.app/advertiseItems")
+    fetch("https://bmb-server.vercel.app/advertiseItems")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);

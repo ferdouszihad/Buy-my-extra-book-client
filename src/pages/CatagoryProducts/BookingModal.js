@@ -25,7 +25,7 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
       orderTime: time,
       ...bookingInfo,
     };
-    fetch(`https://buymy-book-server.vercel.app/bookPurchase/${bookId}`, {
+    fetch(`https://bmb-server.vercel.app/bookPurchase/${bookId}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -34,7 +34,7 @@ const BookingModal = ({ bookingInfo, handleClose, handleShow, show }) => {
       })
       .catch((err) => console.log(err));
 
-    fetch("https://buymy-book-server.vercel.app/makeOrder", {
+    fetch("https://bmb-server.vercel.app/makeOrder", {
       method: "POST",
       headers: {
         "content-type": "application/json",

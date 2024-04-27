@@ -6,7 +6,7 @@ import CatagorySingle from "./CatagorySingle";
 const Catagories = () => {
   const [catagories, setCatagories] = useState([]);
   useEffect(() => {
-    fetch("https://buymy-book-server.vercel.app/catagories")
+    fetch("https://bmb-server.vercel.app/catagories")
       .then((res) => res.json())
       .then((cat) => setCatagories(cat))
       .catch((err) => console.log(err));
